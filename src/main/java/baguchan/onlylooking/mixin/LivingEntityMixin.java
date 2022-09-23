@@ -12,16 +12,15 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(LivingEntity.class)
 public abstract class LivingEntityMixin extends Entity {
-
-	public LivingEntityMixin(EntityType<?> p_19870_, Level p_19871_) {
-		super(p_19870_, p_19871_);
+	public LivingEntityMixin(EntityType<?> entityType, Level level) {
+		super(entityType, level);
 	}
 
 	@Inject(at = @At("HEAD"), method = "hasLineOfSight", cancellable = true)
-	public void isLookingAtMe(Entity p_32535_, CallbackInfoReturnable<Boolean> callbackInfo) {
+	public void isLookingAtMe(Entity entity, CallbackInfoReturnable<Boolean> cir) {
 		LivingEntity livingEntity = (LivingEntity) ((Object) this);
-		if (p_32535_.level == this.level && p_32535_ instanceof LivingEntity && !LookUtils.isLookingAtYou(livingEntity, (LivingEntity) p_32535_)) {
-			callbackInfo.setReturnValue(false);
+		if (entity.level == this.level && entity instanceof LivingEntity && !LookUtils.isLookingAtYou(livingEntity, (LivingEntity) entity)) {
+			cir.setReturnValue(false);
 		}
 	}
 }

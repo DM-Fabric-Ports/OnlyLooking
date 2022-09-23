@@ -25,7 +25,6 @@ public class LookUtils {
 
 		Vec3 vec3 = entity.getViewVector(1.0F).normalize();
 		Vec3 vec31 = new Vec3(target.getX() - entity.getX(), target.getEyeY() - entity.getEyeY(), target.getZ() - entity.getZ());
-		double d0 = vec31.length();
 		vec31 = vec31.normalize();
 
 		double d1 = vec3.dot(vec31);
