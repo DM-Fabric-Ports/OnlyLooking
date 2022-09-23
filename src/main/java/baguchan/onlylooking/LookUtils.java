@@ -3,7 +3,6 @@ package baguchan.onlylooking;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.registries.ForgeRegistries;
 
 
 /*
@@ -13,7 +12,7 @@ import net.minecraftforge.registries.ForgeRegistries;
  */
 public class LookUtils {
 	public static boolean isLookingAtYou(LivingEntity entity, LivingEntity target) {
-		return !ModConfigs.COMMON.NEW_LOOKING_BLACKLIST.get().contains(ForgeRegistries.ENTITY_TYPES.getKey(entity.getType()).toString()) && isLookingAtYouTest(entity, target);
+		return isLookingAtYouTest(entity, target);
 	}
 
 	public static boolean isLookingAtYouTest(LivingEntity entity, LivingEntity target) {
@@ -26,7 +25,6 @@ public class LookUtils {
 
 		Vec3 vec3 = entity.getViewVector(1.0F).normalize();
 		Vec3 vec31 = new Vec3(target.getX() - entity.getX(), target.getEyeY() - entity.getEyeY(), target.getZ() - entity.getZ());
-		double d0 = vec31.length();
 		vec31 = vec31.normalize();
 
 		double d1 = vec3.dot(vec31);
