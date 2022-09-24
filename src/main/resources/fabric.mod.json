@@ -16,7 +16,7 @@
 
   "environment": "*",
   "entrypoints": {
-    "init": [
+    "main": [
       "baguchan.onlylooking.OnlyLooking"
     ]
   },
